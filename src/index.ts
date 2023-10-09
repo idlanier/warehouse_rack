@@ -121,4 +121,12 @@ function getSlotNumberProductByExpDate(expDate: string) {
   console.info(result);
 }
 
-function findSlotNumberProductBySku(sku: string) {}
+function findSlotNumberProductBySku(sku: string) {
+  const rack = warehouse.findBySku(sku);
+
+  if (rack) {
+    console.info(rack?.slotNo);
+  } else {
+    console.info('Not found');
+  }
+}
