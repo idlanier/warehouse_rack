@@ -27,7 +27,10 @@ export class Warehouse {
   }
 
   getByExpDate(expDate: string): Product[] | [] {
-    return [];
+    const filteredProduct = this.racks.filter((product) => {
+      return product.expDate == expDate;
+    });
+    return filteredProduct;
   }
 
   findBySku(sku: string): Product | undefined {

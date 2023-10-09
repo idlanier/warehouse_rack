@@ -113,4 +113,30 @@ describe('Warehouse Class', () => {
       new Product('', '', new Date('').toDateString())
     );
   });
+
+  it('should get list filtered rack by desired exp date', () => {
+    const warehouse = new Warehouse(3);
+    const productSlotNoOne = '1';
+    const productSkuOne = 'ZG11AQA';
+    const productExpDateOne = '2024-02-28';
+    const newProductOne = new Product(
+      productSlotNoOne,
+      productSkuOne,
+      productExpDateOne
+    );
+    warehouse.add(newProductOne);
+
+    const productSlotNoTwo = '2';
+    const productSkuTwo = 'ZG11AQB';
+    const productExpDateTwo = '2024-02-21';
+    const newProductTwo = new Product(
+      productSlotNoTwo,
+      productSkuTwo,
+      productExpDateTwo
+    );
+    warehouse.add(newProductTwo);
+
+    const filteredRacks = warehouse.getByExpDate(productExpDateOne);
+    expect(filteredRacks[0]).toBe(newProductOne);
+  });
 });
