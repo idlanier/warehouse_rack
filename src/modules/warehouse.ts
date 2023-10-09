@@ -18,7 +18,9 @@ export class Warehouse {
 
   remove(rackNo: number) {}
 
-  getByExpDate(expDate: string) {}
+  getByExpDate(expDate: string): Product[] {
+    return [];
+  }
 
   findBySku(sku: string) {}
 
