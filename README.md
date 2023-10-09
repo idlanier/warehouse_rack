@@ -40,6 +40,8 @@ or
 npm run start file_input.txt
 ```
 
+Note: Please put your file inside `files/..`
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
