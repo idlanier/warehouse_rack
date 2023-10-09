@@ -81,9 +81,12 @@ function addRack(sku: string, expDate: string) {
   }
 }
 
-function getStatusRack(warehouse: Warehouse) {}
+function removeRack(rackNo: number) {
+  warehouse.remove(rackNo);
+  console.info(`Slot number ${rackNo} is free`);
+}
 
-function removeRack(rackNo: number) {}
+function getStatusRack(warehouse: Warehouse) {}
 
 function getSkuProductByExpDate(expDate: string) {}
 
