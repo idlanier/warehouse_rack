@@ -20,6 +20,18 @@ describe('Warehouse Class', () => {
     expect(warehouse.racks[0]).toBe(newProduct);
   });
 
+  it('should throw an error because rack length is 0', () => {
+    const warehouse = new Warehouse(0);
+    const productSlotNo = '1';
+    const productSku = 'ZG11AQA';
+    const productExpDate = '2024-02-28';
+    const newProduct = new Product(productSlotNo, productSku, productExpDate);
+    const fn = () => {
+      warehouse.add(newProduct);
+    };
+    expect(fn).toThrowError();
+  });
+
   it('rackNo should return -1 ', () => {
     const warehouse = new Warehouse(0);
 
