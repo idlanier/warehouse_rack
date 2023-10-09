@@ -13,7 +13,7 @@ npm install
 Run this command to build the apps
 
 ```
-npm run build
+bin/setup
 ```
 
 ## Usage
@@ -31,13 +31,13 @@ npm run build
 Run the apps
 
 ```
-npm run start
+bin/warehouse_rack
 ```
 
 or
 
 ```
-npm run start file_input.txt
+bin/warehouse_rack file_input.txt
 ```
 
 Note: Please put your file inside `files/..`
