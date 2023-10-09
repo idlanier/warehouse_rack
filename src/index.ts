@@ -1,6 +1,7 @@
 import * as readline from 'readline';
 import * as fs from 'fs';
 import { Warehouse } from './modules/warehouse';
+import { Product } from './modules/product';
 
 const args = process.argv;
 
@@ -30,6 +31,7 @@ rl.on('line', function (line) {
   switch (input[0].trim()) {
     case 'create_warehouse_rack':
       createWarehouse(Number(input[1]));
+      console.log(`Created a warehouse rack with ${input[1]} slots`);
       break;
     case 'rack':
       addRack(input[1], input[2]);
@@ -64,9 +66,22 @@ function createWarehouse(rackLength: number) {
   warehouse = new Warehouse(rackLength);
 }
 
-function getStatusRack(warehouse: Warehouse) {}
+function addRack(sku: string, expDate: string) {
+  let rackNo = warehouse.findEmptyRack();
+  if (rackNo !== -1) {
+    const newProduct = new Product(
+      String(rackNo + 1),
+      sku,
+      new Date(expDate).toISOString().slice(0, 10)
+    );
+    warehouse.add(newProduct);
+    console.info('Allocated slot number: ', rackNo + 1);
+  } else {
+    console.info('Sorry, rack is full');
+  }
+}
 
-function addRack(sku: string, expDate: string) {}
+function getStatusRack(warehouse: Warehouse) {}
 
 function removeRack(rackNo: number) {}
 
