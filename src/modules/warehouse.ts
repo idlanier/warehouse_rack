@@ -14,15 +14,32 @@ export class Warehouse {
     }
   }
 
-  add(product: Product) {}
+  add(product: Product): void {
+    const rackNo = this.findEmptyRack();
+    if (rackNo === -1) {
+      throw Error();
+    }
+    this.racks[rackNo] = product;
+  }
 
-  remove(rackNo: number) {}
+  remove(rackNo: number): void {}
 
-  getByExpDate(expDate: string): Product[] {
+  getByExpDate(expDate: string): Product[] | [] {
     return [];
   }
 
-  findBySku(sku: string) {}
+  findBySku(sku: string): Product | undefined {
+    return undefined;
+  }
 
-  findEmptyRack() {}
+  findEmptyRack(): number {
+    let rackNo = -1;
+    for (let i = 0; i < this.racks.length; i++) {
+      if (this.racks[i].sku === '') {
+        rackNo = i;
+        return rackNo;
+      }
+    }
+    return rackNo;
+  }
 }
