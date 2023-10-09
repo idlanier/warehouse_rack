@@ -97,4 +97,20 @@ describe('Warehouse Class', () => {
     expect(warehouse.racks.length).toBe(3);
     expect(emptyRackNo).toBe(2);
   });
+
+  it('should remove rack slot inside warehouse', () => {
+    const warehouse = new Warehouse(3);
+    const productSlotNo = '1';
+    const productSku = 'ZG11AQA';
+    const productExpDate = '2024-02-28';
+    const newProduct = new Product(productSlotNo, productSku, productExpDate);
+    warehouse.add(newProduct);
+
+    warehouse.remove(Number(productSlotNo));
+    expect(warehouse).toBeDefined();
+    expect(warehouse.racks.length).toBe(3);
+    expect(warehouse.racks[0]).toStrictEqual(
+      new Product('', '', new Date('').toDateString())
+    );
+  });
 });

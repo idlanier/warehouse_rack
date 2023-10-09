@@ -22,7 +22,9 @@ export class Warehouse {
     this.racks[rackNo] = product;
   }
 
-  remove(rackNo: number): void {}
+  remove(rackNo: number): void {
+    this.racks[rackNo - 1] = new Product('', '', new Date('').toDateString());
+  }
 
   getByExpDate(expDate: string): Product[] | [] {
     return [];
