@@ -9,7 +9,7 @@ let warehouse: Warehouse = new Warehouse(0);
 let rl: readline.Interface;
 
 if (args[2] !== undefined) {
-  const fileStream = fs.createReadStream(args[2]);
+  const fileStream = fs.createReadStream('files/' + args[2]);
   fileStream;
   rl = readline.createInterface({
     input: fileStream,
