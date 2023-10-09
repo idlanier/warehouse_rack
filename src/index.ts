@@ -99,7 +99,16 @@ function getStatusRack(warehouse: Warehouse) {
   }
 }
 
-function getSkuProductByExpDate(expDate: string) {}
+function getSkuProductByExpDate(expDate: string) {
+  const racks = warehouse.getByExpDate(expDate);
+  let result = '';
+
+  for (const rack of racks) {
+    result += rack.sku + ' ';
+  }
+
+  console.info(result);
+}
 
 function getSlotNumberProductByExpDate(expDate: string) {}
 
