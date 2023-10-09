@@ -86,7 +86,18 @@ function removeRack(rackNo: number) {
   console.info(`Slot number ${rackNo} is free`);
 }
 
-function getStatusRack(warehouse: Warehouse) {}
+function getStatusRack(warehouse: Warehouse) {
+  console.info('Slot No. \t SKU No. \t Exp Date \t');
+  if (warehouse.racks.length > 0) {
+    for (const rack of warehouse.racks) {
+      if (rack.sku != '') {
+        const expDate =
+          rack.expDate.toString() !== 'Invalid Date' ? rack.expDate : '';
+        console.info(`${rack.slotNo} \t\t ${rack.sku} \t ${expDate} `);
+      }
+    }
+  }
+}
 
 function getSkuProductByExpDate(expDate: string) {}
 
