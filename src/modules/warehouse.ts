@@ -34,7 +34,9 @@ export class Warehouse {
   }
 
   findBySku(sku: string): Product | undefined {
-    return undefined;
+    return this.racks.find((product) => {
+      return product.sku == sku;
+    });
   }
 
   findEmptyRack(): number {
